@@ -1,5 +1,5 @@
 
-StoredTaskList = [
+TaskList = [
     {
         taskText: 'Clean shelf'
     },
@@ -8,25 +8,27 @@ StoredTaskList = [
     },
 ]
 
+
+
 window.onload = () => {
 
     const taskListDiv = document.querySelector('#task-list');
     const taskFormText = document.querySelector('#task-form-text');
     const taskForm = document.querySelector('#task-form');
-    
+
     // Display Tasks
-    displayTaskList(StoredTaskList, taskListDiv);
+    displayTaskList(TaskList, taskListDiv);
     // Form submit function
     taskForm.addEventListener('submit', function(e) {
-        addTask(taskFormText, taskListDiv);
+        addTask(TaskList, taskListDiv, taskFormText);
         e.preventDefault();
     });
 }
 
 // add to task list 
-function addTask(formInputText, parentDiv) {
+function addTask(taskList, parentDiv, formInputText  ) {
     if (!(formInputText.value.trim() == '')){
-        StoredTaskList.push( {taskText: formInputText.value} );
+        taskList.push( {taskText: formInputText.value} );
         constructTaskList(formInputText.value, parentDiv);
     }
     formInputText.value = '';
