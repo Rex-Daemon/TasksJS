@@ -9,13 +9,13 @@ StoredTaskList = [
 ]
 
 window.onload = () => {
-    
+
     const taskList = document.querySelector('#task-list');
     displayTaskList(StoredTaskList, taskList);
 }
 
 // Display the Tasks
-function displayTaskList(StoredList, parentDiv){
+function displayTaskList(StoredList, parentDiv) {
     for (let i = 0; i < StoredList.length; i++) {
         constructTaskList(StoredList[i].taskText, parentDiv);
     }
@@ -38,9 +38,17 @@ function constructTaskList(taskText, parentDiv) {
     divTaskCheckbox.addEventListener('click', function () {
         onCheck(divTaskCheckbox, divTaskText);
     });
+    // Remove button
+    const divTaskRemove = document.createElement('button');
+    divTaskRemove.innerHTML = '-'
+    divTaskRemove.classList.add('taskRemove');
+    divTaskRemove.addEventListener('click', function () {
+        divTask.parentNode.removeChild(divTask);
+    });
     // Append
     divTask.appendChild(divTaskCheckbox);
     divTask.appendChild(divTaskText);
+    divTask.appendChild(divTaskRemove);
     parentDiv.appendChild(divTask);
 }
 
