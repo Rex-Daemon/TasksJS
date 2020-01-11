@@ -8,28 +8,32 @@ TaskList = [
     },
 ]
 
-
+// Initialize in local storage
+if (localStorage.getItem('StoredTaskList') == null) {
+    localStorage.setItem('StoredTaskList', JSON.stringify(TaskList));
+}
 
 window.onload = () => {
 
     const taskListDiv = document.querySelector('#task-list');
     const taskFormText = document.querySelector('#task-form-text');
     const taskForm = document.querySelector('#task-form');
-
+    let myList = JSON.parse(localStorage.getItem('StoredTaskList') || "[]");
     // Display Tasks
-    displayTaskList(TaskList, taskListDiv);
+    displayTaskList(myList, taskListDiv);
     // Form submit function
-    taskForm.addEventListener('submit', function(e) {
-        addTask(TaskList, taskListDiv, taskFormText);
+    taskForm.addEventListener('submit', function (e) {
+        addTask(myList, taskListDiv, taskFormText);
         e.preventDefault();
     });
 }
 
 // add to task list 
-function addTask(taskList, parentDiv, formInputText  ) {
-    if (!(formInputText.value.trim() == '')){
-        taskList.push( {taskText: formInputText.value} );
-        constructTaskList(formInputText.value, parentDiv);
+function addTask(taskList, parentDiv, formInputText) {
+    if (!(formInputText.value.trim() == '')) {
+        taskList.push({ taskText: formInputText.value });
+        localStorage.setItem('StoredTaskList', JSON.stringify(taskList));
+        constructTaskList(taskList, formInputText.value, parentDiv);
     }
     formInputText.value = '';
 }
@@ -37,12 +41,12 @@ function addTask(taskList, parentDiv, formInputText  ) {
 // Display the Tasks
 function displayTaskList(StoredList, parentDiv) {
     for (let i = 0; i < StoredList.length; i++) {
-        constructTaskList(StoredList[i].taskText, parentDiv);
+        constructTaskList(StoredList, StoredList[i].taskText, parentDiv);
     }
 }
 
 // Construct taskList
-function constructTaskList(taskText, parentDiv) {
+function constructTaskList(taskList, taskText, parentDiv) {
 
     // Consrtuct Task div
     const divTask = document.createElement('div');
@@ -60,10 +64,10 @@ function constructTaskList(taskText, parentDiv) {
     });
     // Remove button
     const divTaskRemove = document.createElement('button');
-    divTaskRemove.innerHTML = '-'
+    divTaskRemove.innerHTML = '-';
     divTaskRemove.classList.add('taskRemove');
     divTaskRemove.addEventListener('click', function () {
-        divTask.parentNode.removeChild(divTask);
+        onRemove(taskList, taskText, divTask);
     });
     // Append
     divTask.appendChild(divTaskCheckbox);
@@ -81,4 +85,11 @@ function onCheck(checkbox, text) {
         text.style.textDecoration = 'none';
         text.style.color = '#000000'
     }
+}
+
+function onRemove(list, text, div) {
+    const removeIndex = list.indexOf(text);
+    list.splice(removeIndex, 1)
+    localStorage.setItem('StoredTaskList', JSON.stringify(list));
+    div.parentNode.removeChild(div);
 }
