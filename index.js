@@ -11,7 +11,24 @@ StoredTaskList = [
 window.onload = () => {
 
     const taskList = document.querySelector('#task-list');
+    const taskFormText = document.querySelector('#task-form-text');
+    const taskFormSubmit = document.querySelector('#task-form');
+    // Display Tasks
     displayTaskList(StoredTaskList, taskList);
+    // Form submit function
+    taskFormSubmit.addEventListener('click', function(e) {
+        addTask(taskFormText, taskList);
+        e.preventDefault();
+    });
+}
+
+// add to task list 
+function addTask(formInputText, parentDiv) {
+    if (!(formInputText.value.trim() == '')){
+        StoredTaskList.push( {taskText: formInputText.value} );
+        constructTaskList(formInputText.value, parentDiv);
+    }
+    formInputText.value = '';
 }
 
 // Display the Tasks
