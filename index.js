@@ -1,7 +1,7 @@
 
 StoredTaskList = [
     {
-        taskText: 'Clean shelf '
+        taskText: 'Clean shelf'
     },
     {
         taskText: 'Pay bills'
@@ -10,14 +10,15 @@ StoredTaskList = [
 
 window.onload = () => {
 
-    const taskList = document.querySelector('#task-list');
+    const taskListDiv = document.querySelector('#task-list');
     const taskFormText = document.querySelector('#task-form-text');
-    const taskFormSubmit = document.querySelector('#task-form');
+    const taskForm = document.querySelector('#task-form');
+    
     // Display Tasks
-    displayTaskList(StoredTaskList, taskList);
+    displayTaskList(StoredTaskList, taskListDiv);
     // Form submit function
-    taskFormSubmit.addEventListener('submit', function(e) {
-        addTask(taskFormText, taskList);
+    taskForm.addEventListener('submit', function(e) {
+        addTask(taskFormText, taskListDiv);
         e.preventDefault();
     });
 }
