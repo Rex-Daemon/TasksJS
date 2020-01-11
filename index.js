@@ -16,7 +16,7 @@ window.onload = () => {
     // Display Tasks
     displayTaskList(StoredTaskList, taskList);
     // Form submit function
-    taskFormSubmit.addEventListener('click', function(e) {
+    taskFormSubmit.addEventListener('submit', function(e) {
         addTask(taskFormText, taskList);
         e.preventDefault();
     });
