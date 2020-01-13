@@ -50,22 +50,26 @@ function constructTaskList(taskList, taskText, parentDiv) {
 
     // Consrtuct Task div
     const divTask = document.createElement('div');
+    divTask.classList.add('row');
     divTask.classList.add('task');
     // Construct task text
     const divTaskText = document.createElement('p');
+    divTaskText.classList.add('col-10');
     divTaskText.classList.add('taskText');
     divTaskText.innerText = taskText;
     // Construct checkbox input
     const divTaskCheckbox = document.createElement('input');
     divTaskCheckbox.type = 'checkbox';
-    divTaskCheckbox.classList.add('taskCheckbox');
+    divTaskCheckbox.classList.add('col-1');
     divTaskCheckbox.addEventListener('click', function () {
         onCheck(divTaskCheckbox, divTaskText);
     });
     // Remove button
     const divTaskRemove = document.createElement('button');
     divTaskRemove.innerHTML = '-';
-    divTaskRemove.classList.add('taskRemove');
+    divTaskRemove.classList.add('col-1');
+    divTaskRemove.classList.add('btn');
+    divTaskRemove.classList.add('btn-danger');
     divTaskRemove.addEventListener('click', function () {
         onRemove(taskList, taskText, divTask);
     });
