@@ -1,4 +1,3 @@
 # TasksJS
-TasksJS is a simple implementation of task management using HTML, CSS, Javascript, Bootstrap 4 and Localstorage
-
+TasksJS is a simple implementation of task management using ReactJS and Bootstrap 4
 [Live Demo](https://rex-daemon.github.io/TasksJS/)
