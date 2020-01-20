@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/TasksJS/static/css/main.10fd3a4e.chunk.css",
+    "main.js": "/TasksJS/static/js/main.6619652e.chunk.js",
+    "main.js.map": "/TasksJS/static/js/main.6619652e.chunk.js.map",
+    "runtime-main.js": "/TasksJS/static/js/runtime-main.355ccfea.js",
+    "runtime-main.js.map": "/TasksJS/static/js/runtime-main.355ccfea.js.map",
+    "static/js/2.4bc788f6.chunk.js": "/TasksJS/static/js/2.4bc788f6.chunk.js",
+    "static/js/2.4bc788f6.chunk.js.map": "/TasksJS/static/js/2.4bc788f6.chunk.js.map",
+    "index.html": "/TasksJS/index.html",
+    "precache-manifest.9dcf22fb3f3ee9c6d4d0ff6a67471e37.js": "/TasksJS/precache-manifest.9dcf22fb3f3ee9c6d4d0ff6a67471e37.js",
+    "service-worker.js": "/TasksJS/service-worker.js",
+    "static/css/main.10fd3a4e.chunk.css.map": "/TasksJS/static/css/main.10fd3a4e.chunk.css.map",
+    "static/js/2.4bc788f6.chunk.js.LICENSE": "/TasksJS/static/js/2.4bc788f6.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.355ccfea.js",
+    "static/js/2.4bc788f6.chunk.js",
+    "static/css/main.10fd3a4e.chunk.css",
+    "static/js/main.6619652e.chunk.js"
+  ]
+}
